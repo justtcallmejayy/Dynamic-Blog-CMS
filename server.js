@@ -133,14 +133,17 @@ app.get("/blog/:id", (req, res) => {
         <body>
           <header>
             <h1>${blogPost.title}</h1>
-            <p><strong>Post ID:</strong> ${blogPost.id}</p>
+            <p><em>Written by John Doe on January 1, 2023</em></p>
           </header>
-          <main>
+          <main class="blog-post">
             <article>
               <p>${blogPost.content}</p>
             </article>
             <a href="/blogs" class="btn">Back to Blog List</a>
           </main>
+          <footer>
+            <p>&copy; 2023 BlogSphere. All Rights Reserved.</p>
+          </footer>
         </body>
       </html>
     `);
@@ -161,6 +164,7 @@ app.get("/blog/:id", (req, res) => {
     `);
   }
 });
+
 
 app.post("/blogs", (req, res) => {
   const { title, content } = req.body;
