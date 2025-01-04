@@ -57,7 +57,7 @@ app.get("/blogs", (req, res) => {
       </head>
       <body>
         <header>
-          <h1>Dynamic Blogs</h1>
+          <h1>InsightHub</h1>
         </header>
         <main>
           <section class="blog-list">
