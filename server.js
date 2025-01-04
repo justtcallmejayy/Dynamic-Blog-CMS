@@ -36,7 +36,13 @@ app.get("/blogs", (req, res) => {
       <article class="blog-item">
         <h2>${post.title}</h2>
         <p>${post.content.substring(0, 100)}...</p>
-        <a href="/blog/${post.id}" class="btn">Read More</a>
+        <div class="button-group">
+          <a href="/blog/${post.id}" class="btn view-btn">Read More</a>
+          <a href="/edit/${post.id}" class="btn edit-btn">Edit</a>
+          <form action="/blog/${post.id}" method="POST" class="inline-form">
+            <button type="submit" class="btn delete-btn">Delete</button>
+          </form>
+        </div>
       </article>
     `
     )
@@ -49,20 +55,26 @@ app.get("/blogs", (req, res) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blog List</title>
-        <link rel="stylesheet" href="/public/css/styles.css">
+        <link rel="stylesheet" href="/css/styles.css">
       </head>
       <body>
         <header>
-          <h1>Welcome to InsightHub CMS</h1>
-          <p>Explore the latest posts and updates.</p>
+          <h1>Welcome to BlogSphere</h1>
+          <p>Explore, create, edit, and manage your blogs in one place.</p>
         </header>
         <main>
           <section class="blog-list">
             ${blogListHTML}
           </section>
+          <form action="/blogs" method="POST" class="blog-form">
+            <h2>Create a New Blog</h2>
+            <input type="text" name="title" placeholder="Blog Title" required />
+            <textarea name="content" placeholder="Blog Content" required></textarea>
+            <button type="submit" class="btn create-btn">Add Blog Post</button>
+          </form>
         </main>
         <footer>
-          <p>&copy; 2023 InsightHub-CMS. All Rights Reserved.</p>
+          <p>&copy; 2023 InsightHub. All Rights Reserved.</p>
         </footer>
       </body>
     </html>
@@ -164,7 +176,6 @@ app.get("/blog/:id", (req, res) => {
     `);
   }
 });
-
 
 app.post("/blogs", (req, res) => {
   const { title, content } = req.body;

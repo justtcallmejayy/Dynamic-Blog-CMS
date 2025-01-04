@@ -1,72 +1,104 @@
-/* General Styles */
+/* Body and Typography */
 body {
   font-family: "Poppins", Arial, sans-serif;
   background-color: #e0e1dd; /* Page Background */
+  color: #0d1b2a; /* Main Text */
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  color: #0d1b2a; /* Main Text */
 }
 
 header {
   text-align: center;
-  background-color: #1b263b; /* Headings */
+  background: #1b263b; /* Headings */
   color: #e0e1dd; /* Contrast */
   padding: 2rem 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-  margin: 0;
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 header p {
   font-size: 1.2rem;
-  margin-top: 0.5rem;
+  margin-top: 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1b263b; /* Headings */
+  color: #e0e1dd; /* Contrast */
+  margin-top: 2rem;
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  background-color: #415a77; /* Buttons */
-  color: #e0e1dd; /* Contrast */
   padding: 0.5rem 1rem;
-  border: none;
   border-radius: 5px;
   font-size: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.btn:hover {
-  background-color: #778da9; /* Links/Accents */
+.view-btn {
+  background-color: #415a77;
+  color: #e0e1dd;
 }
 
-.delete-btn {
-  background-color: #dc3545; /* Delete Button Red */
-}
-
-.delete-btn:hover {
-  background-color: #a71d2a;
+.view-btn:hover {
+  background-color: #778da9;
 }
 
 .edit-btn {
-  background-color: #778da9; /* Links/Accents */
+  background-color: #778da9;
+  color: #e0e1dd;
 }
 
 .edit-btn:hover {
   background-color: #415a77;
 }
 
-/* Blog List Page */
+.delete-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+.create-btn {
+  background-color: #1b263b;
+  color: #e0e1dd;
+  width: 100%;
+}
+
+.create-btn:hover {
+  background-color: #415a77;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Blog List */
 .blog-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 2rem;
-  margin: 0 auto;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 .blog-item {
@@ -75,26 +107,24 @@ header p {
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .blog-item:hover {
   transform: scale(1.02);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .blog-item h2 {
-  font-size: 1.5rem;
   color: #1b263b;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .blog-item p {
+  font-size: 1rem;
   color: #0d1b2a;
-  margin: 1rem 0;
-}
-
-.blog-item a {
-  margin-top: 1rem;
-  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 /* Blog Post Page */
