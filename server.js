@@ -30,7 +30,36 @@ app.get("/", (req, res) => {
 });
 
 app.get("/blogs", (req, res) => {
-  res.sendFile(__dirname + "/views/blog-list.html");
+  const blogListHTML = blogPosts
+    .map(
+      (post) => `
+      <article class="blog-item">
+        <h2>${post.title}</h2>
+        <p>${post.content.substring(0, 100)}...</p>
+        <a href="/blog/${post.id}" class="btn">Read More</a>
+      </article>
+    `
+    )
+    .join("");
+
+  res.send(`
+    <html>
+      <head>
+        <link rel="stylesheet" href="/css/styles.css">
+        <title>Blog List</title>
+      </head>
+      <body>
+        <header>
+          <h1>Dynamic Blogs</h1>
+        </header>
+        <main>
+          <section class="blog-list">
+            ${blogListHTML}
+          </section>
+        </main>
+      </body>
+    </html>
+  `);
 });
 
 app.get("/blog/:id", (req, res) => {
