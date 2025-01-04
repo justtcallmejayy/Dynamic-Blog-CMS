@@ -56,6 +56,11 @@ app.get("/blogs", (req, res) => {
           <section class="blog-list">
             ${blogListHTML}
           </section>
+          <form action="/blogs" method="POST" class="blog-form">
+            <input type="text" name="title" placeholder="Blog Title" required />
+            <textarea name="content" placeholder="Blog Content" required></textarea>
+            <button type="submit" class="btn">Add Blog Post</button>
+          </form>
         </main>
       </body>
     </html>
@@ -81,6 +86,17 @@ app.get("/blog/:id", (req, res) => {
   } else {
     res.status(404).send("Blog post not found");
   }
+});
+
+app.post("/blogs", (req, res) => {
+  const { title, content } = req.body;
+  const newPost = {
+    id: blogPosts.length + 1,
+    title,
+    content,
+  };
+  blogPosts.push(newPost);
+  res.redirect("/blogs");
 });
 
 // Start server
