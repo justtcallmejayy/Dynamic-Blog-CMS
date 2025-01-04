@@ -37,10 +37,6 @@ app.get("/blogs", (req, res) => {
         <h2>${post.title}</h2>
         <p>${post.content.substring(0, 100)}...</p>
         <a href="/blog/${post.id}" class="btn">Read More</a>
-        <form action="/blog/${post.id}" method="POST" class="inline-form">
-          <button type="submit" class="btn delete-btn">Delete</button>
-        </form>
-        <a href="/edit/${post.id}" class="btn edit-btn">Edit</a>
       </article>
     `
     )
@@ -53,22 +49,21 @@ app.get("/blogs", (req, res) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blog List</title>
-        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/public/css/styles.css">
       </head>
       <body>
         <header>
-          <h1>InsightHub</h1>
+          <h1>Welcome to InsightHub CMS</h1>
+          <p>Explore the latest posts and updates.</p>
         </header>
         <main>
           <section class="blog-list">
             ${blogListHTML}
           </section>
-          <form action="/blogs" method="POST" class="blog-form">
-            <input type="text" name="title" placeholder="Blog Title" required />
-            <textarea name="content" placeholder="Blog Content" required></textarea>
-            <button type="submit" class="btn">Add Blog Post</button>
-          </form>
         </main>
+        <footer>
+          <p>&copy; 2023 InsightHub-CMS. All Rights Reserved.</p>
+        </footer>
       </body>
     </html>
   `);
